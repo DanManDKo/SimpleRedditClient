@@ -1,10 +1,10 @@
 package com.reddit.data.feature.feed
 
+import com.reddit.data.network.mapper.response.FeedResponseMapper
 import com.reddit.data.network.service.FeedService
+import com.reddit.data.util.Mappers
 import com.reddit.domain.model.Feed
-import com.reddit.domain.model.PageBundle
-import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Single
 import javax.inject.Inject
 
 /**
@@ -15,16 +15,18 @@ import javax.inject.Inject
  */
 class FeedNetworkStorage
 @Inject
-constructor(private val feedService: FeedService) {
-    fun refresh(): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    fun getFeed(): Observable<PageBundle<Feed>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    fun fetchNext() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+constructor(
+    private val feedService: FeedService,
+    private val feedResponseMapper: FeedResponseMapper
+) {
+    fun getFeed(offset: Int, limit: Int, period: String, after: String?): Single<List<Feed>> {
+        return feedService.getTopList(offset, limit, period, after)
+            .map { dto ->
+                dto.data.children.forEach { child ->
+                    child.data.after = dto.data.after
+                }
+                dto
+            }
+            .map { Mappers.mapCollection(it.data.children, feedResponseMapper) }
     }
 }
