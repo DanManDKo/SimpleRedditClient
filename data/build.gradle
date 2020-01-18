@@ -2,19 +2,18 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.2"
 
+android {
+    compileSdkVersion rootProject.compileSdk
+    buildToolsVersion rootProject.buildTools
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 28
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
 
     buildTypes {
@@ -48,22 +47,13 @@ android {
             option("-Xmaxerrs", 1000)
         }
     }
+
 }
 
 dependencies {
-    implementation project(':domain')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    /* Dagger */
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation project(":domain")
 
     /* Network */
     implementation "com.squareup.retrofit2:retrofit:2.5.0"
@@ -74,4 +64,15 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:3.13.1"
     implementation "com.google.code.gson:gson:2.8.5"
     implementation "com.itkacher.okhttpprofiler:okhttpprofiler:1.0.5"
+
+    /* Dagger */
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    /* Unit Test */
+    testImplementation "junit:junit:$junitVirsion"
+    // mockito
+    testImplementation "org.mockito:mockito-inline:$mockitoVirsion"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockitoKotlinVirsion"
 }

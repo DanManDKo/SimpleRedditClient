@@ -1,22 +1,25 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.2"
+    compileSdkVersion rootProject.compileSdk
+    buildToolsVersion rootProject.buildTools
+
+
+
     defaultConfig {
         applicationId "com.danman.simpleredditclient"
-        minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 1
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode rootProject.versionCode
         versionName "1.0"
 
         multiDexEnabled true
-
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -49,10 +52,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
     implementation project(":domain")
     implementation project(":data")
     implementation project(":presentation")
 }
+
