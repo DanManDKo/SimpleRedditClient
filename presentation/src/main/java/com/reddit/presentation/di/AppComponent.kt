@@ -6,7 +6,6 @@ import com.reddit.presentation.App
 import com.reddit.presentation.di.module.AppModule
 import com.reddit.presentation.di.module.PresentationModule
 import com.reddit.presentation.di.module.RepositoryModule
-import com.reddit.presentation.di.module.ViewModelModule
 import dagger.Component
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -21,7 +20,6 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
-        ViewModelModule::class,
         PresentationModule::class,
         RepositoryModule::class
     ]
