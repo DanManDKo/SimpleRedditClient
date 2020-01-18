@@ -1,9 +1,9 @@
-package com.reddit.domain.exception.repository
+package com.reddit.domain.model
 
 /**
  * Created with Android Studio.
  * User: Danil Konovalenko
  * Date: 2020-01-18
- * Time: 17:02
+ * Time: 20:51
  */
-interface Repository
+data class Feed(val id: Int)

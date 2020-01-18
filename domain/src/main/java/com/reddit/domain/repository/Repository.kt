@@ -1,10 +1,9 @@
-package com.reddit.data.network.service
+package com.reddit.domain.repository
 
 /**
  * Created with Android Studio.
  * User: Danil Konovalenko
  * Date: 2020-01-18
- * Time: 17:23
+ * Time: 17:02
  */
-interface RedditService {
-}
+interface Repository

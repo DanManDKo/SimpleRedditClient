@@ -1,6 +1,6 @@
 package com.reddit.data.di.module
 
-import com.reddit.data.network.service.RedditService
+import com.reddit.data.network.service.FeedService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -18,7 +18,7 @@ class ServiceModule {
     @Singleton
     internal fun provideDiscoverService(
         retrofit: Retrofit
-    ): RedditService {
-        return retrofit.create(RedditService::class.java)
+    ): FeedService {
+        return retrofit.create(FeedService::class.java)
     }
 }

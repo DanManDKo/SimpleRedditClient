@@ -4,6 +4,7 @@ import android.app.Activity
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.reddit.presentation.R
+import javax.inject.Inject
 
 /**
  * Created with Android Studio.
@@ -11,7 +12,9 @@ import com.reddit.presentation.R
  * Date: 2020-01-18
  * Time: 19:38
  */
-class UiHelper(private val activity: Activity) {
+class UiHelper
+@Inject
+constructor  (private val activity: Activity) {
     private var errorToast: Toast? = null
     private var uploadingDialog: AlertDialog? = null
 

@@ -1,6 +1,6 @@
 package com.reddit.data.di
 
-import com.reddit.domain.exception.repository.Repository
+import com.reddit.domain.repository.Repository
 import dagger.MapKey
 import kotlin.reflect.KClass
 

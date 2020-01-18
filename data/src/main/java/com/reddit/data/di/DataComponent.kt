@@ -5,7 +5,7 @@ import com.reddit.data.di.module.ContextModule
 import com.reddit.data.di.module.NetworkModule
 import com.reddit.data.di.module.RepositoryModule
 import com.reddit.data.di.module.ServiceModule
-import com.reddit.domain.exception.repository.Repository
+import com.reddit.domain.repository.Repository
 import dagger.Component
 import javax.inject.Provider
 import javax.inject.Singleton

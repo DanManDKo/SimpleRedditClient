@@ -28,8 +28,9 @@ import dagger.multibindings.IntoMap
 )
 interface FeedActivityComponent {
     fun inject(activity: FeedActivity)
+
     @Module
-    class ActivityModule(val activity: FeedActivity) {
+    class ActivityModule(private val activity: FeedActivity) {
         @Provides
         fun provideActivity(): Activity = activity
     }
@@ -45,6 +46,7 @@ interface FeedActivityComponent {
     object Initializer {
         fun init(activity: FeedActivity): FeedActivityComponent {
             return DaggerFeedActivityComponent.builder()
+                .activityModule(ActivityModule(activity))
                 .appComponent((activity.application as App).getInjector())
                 .build()
         }

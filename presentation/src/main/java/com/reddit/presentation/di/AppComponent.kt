@@ -1,11 +1,11 @@
 package com.reddit.presentation.di
 
-import androidx.lifecycle.ViewModelProvider
-import com.reddit.domain.exception.repository.Repository
+import com.reddit.domain.repository.Repository
 import com.reddit.presentation.App
 import com.reddit.presentation.di.module.AppModule
 import com.reddit.presentation.di.module.PresentationModule
 import com.reddit.presentation.di.module.RepositoryModule
+import com.reddit.presentation.di.module.ViewModelFactoryModule
 import dagger.Component
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -21,15 +21,14 @@ import javax.inject.Singleton
     modules = [
         AppModule::class,
         PresentationModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        ViewModelFactoryModule::class
     ]
 )
 @Singleton
 interface AppComponent {
 
     fun inject(app: App)
-
-    fun getViewModelFactoryProvider(): ViewModelProvider.Factory
 
     object Initializer {
         fun init(

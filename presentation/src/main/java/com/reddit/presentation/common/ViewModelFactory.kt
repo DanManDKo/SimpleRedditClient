@@ -12,7 +12,7 @@ import javax.inject.Singleton
  * Date: 2020-01-18
  * Time: 16:23
  */
-@Singleton
+
 class ViewModelFactory
 @Inject
 constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>)

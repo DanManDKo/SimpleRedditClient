@@ -24,7 +24,7 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(
         }
     }
 
-    private val component = FeedActivityComponent.Initializer.init(this)
+    private val component by lazy { FeedActivityComponent.Initializer.init(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)

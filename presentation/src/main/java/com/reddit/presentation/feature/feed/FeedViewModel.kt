@@ -1,5 +1,6 @@
 package com.reddit.presentation.feature.feed
 
+import com.reddit.domain.interactors.FeedInteractor
 import com.reddit.presentation.common.BaseViewModel
 import javax.inject.Inject
 
@@ -11,5 +12,5 @@ import javax.inject.Inject
  */
 class FeedViewModel
 @Inject
-constructor() : BaseViewModel() {
+constructor(private val feedInteractor: FeedInteractor) : BaseViewModel() {
 }

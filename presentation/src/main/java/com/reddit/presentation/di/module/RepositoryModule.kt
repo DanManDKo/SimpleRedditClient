@@ -1,7 +1,7 @@
 package com.reddit.presentation.di.module
 
-import com.reddit.domain.exception.repository.RedditRepository
-import com.reddit.domain.exception.repository.Repository
+import com.reddit.domain.repository.FeedRepository
+import com.reddit.domain.repository.Repository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Provider
@@ -19,8 +19,8 @@ class RepositoryModule(
 ) {
 
     @Provides
-    internal fun provideRedditRepository(): RedditRepository {
-        return provides.getValue(RedditRepository::class.java).get() as RedditRepository
+    internal fun provideRedditRepository(): FeedRepository {
+        return provides.getValue(FeedRepository::class.java).get() as FeedRepository
     }
 
 }
