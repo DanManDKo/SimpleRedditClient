@@ -13,17 +13,44 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
+        multiDexEnabled true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
         release {
+            minifyEnabled true
+            buildConfigField 'String', 'SCHEME', "\"https://\""
+            buildConfigField 'String', 'HOST', "\"www.reddit.com\""
+        }
+
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'SCHEME', "\"https://\""
+            buildConfigField 'String', 'HOST', "\"www.reddit.com\""
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    kapt {
+        correctErrorTypes = true
+        generateStubs = true
+        javacOptions {
+            // Increase the max count of errors from annotation processors.
+            // Default is 100.
+            option("-Xmaxerrs", 1000)
         }
     }
 
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
