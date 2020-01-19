@@ -70,6 +70,10 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
     /* Unit Test */
     testImplementation "junit:junit:$junitVirsion"
     // mockito

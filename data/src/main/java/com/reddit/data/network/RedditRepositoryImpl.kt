@@ -2,6 +2,7 @@ package com.reddit.data.network
 
 import com.reddit.data.common.cache.CachePolicy
 import com.reddit.data.common.storage.MemoryPagedListStorage
+import com.reddit.data.feature.feed.FeedDatabaseStorage
 import com.reddit.data.feature.feed.FeedNetworkStorage
 import com.reddit.data.network.mapper.request.PeriodRequestMapper
 import com.reddit.domain.model.Feed
@@ -25,7 +26,8 @@ class RedditRepositoryImpl
 @Inject
 constructor(
     private val feedNetworkStorage: FeedNetworkStorage,
-    private val periodRequestMapper: PeriodRequestMapper
+    private val periodRequestMapper: PeriodRequestMapper,
+    private val feedDatabaseStorage: FeedDatabaseStorage
 ) : FeedRepository {
 
     private val memoryStorage = MemoryPagedListStorage
@@ -53,5 +55,17 @@ constructor(
 
     override fun fetchNext(period: FeedPeriod): Completable {
         return memoryStorage.fetchNext(period)
+    }
+
+    override fun observeFavorites(): Observable<List<Feed>> {
+        return feedDatabaseStorage.observeFeed()
+    }
+
+    override fun storeFavorite(feed: Feed): Completable {
+        return feedDatabaseStorage.storeFeed(feed)
+    }
+
+    override fun removeFavorite(feed: Feed): Completable {
+        return feedDatabaseStorage.removeFeed(feed)
     }
 }

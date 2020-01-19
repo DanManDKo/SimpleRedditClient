@@ -30,4 +30,12 @@ constructor(private val feedRepository: FeedRepository) {
         return feedRepository.fetchNext(period)
     }
 
+    fun addToFavorite(feed: Feed): Completable {
+        return feedRepository.storeFavorite(feed)
+    }
+
+    fun observeFavorites(): Observable<List<Feed>> {
+        return feedRepository.observeFavorites()
+    }
+
 }

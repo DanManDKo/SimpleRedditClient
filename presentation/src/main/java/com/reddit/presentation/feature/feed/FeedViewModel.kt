@@ -11,7 +11,6 @@ import com.reddit.presentation.common.extensions.defaultSubscribe
 import com.reddit.presentation.common.extensions.observeForever
 import com.reddit.presentation.utils.RxDisposable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -50,8 +49,19 @@ constructor(
         )
     }
 
-    fun onFeedClicked(feed: Feed){
+    fun onFeedClicked(feed: Feed) {
 
+    }
+
+    fun onAddToFavoriteClicked(feed: Feed) {
+        RxDisposable.manage(
+            this, "addToFavorite",
+            feedInteractor.addToFavorite(feed)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { uploading.value = true }
+                .doOnTerminate { uploading.value = false }
+                .defaultSubscribe(errorHandler, errorMessage)
+        )
     }
 
     private fun observeFeedByType(feedType: FeedType) {
@@ -79,6 +89,14 @@ constructor(
     }
 
     private fun observeFeedFavorites() {
-
+        RxDisposable.manage(this, "observeFavorites",
+            feedInteractor.observeFavorites()
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { contentState.setValue(ContentState.LOADING) }
+                .doOnError { contentState.setValue(ContentState.ERROR) }
+                .defaultSubscribe(errorHandler, errorMessage) {
+                    content.value = it
+                    hasNext.value = false
+                })
     }
 }

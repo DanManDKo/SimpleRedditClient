@@ -4,7 +4,6 @@ import android.text.format.DateUtils
 import com.reddit.data.network.dto.FeedDto
 import com.reddit.data.network.mapper.Mapper
 import com.reddit.domain.model.Feed
-import com.reddit.domain.model.Image
 import javax.inject.Inject
 
 /**
@@ -31,15 +30,12 @@ constructor() : Mapper<FeedDto.Children, Feed> {
         )
     }
 
-    private fun getImage(children: FeedDto.Children): Image? {
-        if (children.data.preview != null && !children.data.preview.images.isEmpty()) {
-            return Image(
-                children.data.preview.images[0].source.url,
-                children.data.preview.images[0].source.width,
-                children.data.preview.images[0].source.height
-            )
+    private fun getImage(children: FeedDto.Children): String? {
+        return if (children.data.preview != null && children.data.preview.images.isNotEmpty()) {
+            children.data.preview.images[0].source.url
+        } else {
+            return null
         }
-        return null
     }
 
     private fun formatRelativeTime(children: FeedDto.Children): String {

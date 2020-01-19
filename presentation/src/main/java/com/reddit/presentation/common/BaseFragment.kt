@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import javax.inject.Inject
 
@@ -57,9 +58,19 @@ open class BaseFragment<BINDING : ViewDataBinding, VM : BaseViewModel>(
             false
         )
         binding.lifecycleOwner = this
+        defaultObserve()
         configureView()
         return binding.root
     }
 
     protected open fun configureView() {}
+
+    private fun defaultObserve() {
+        vm.errorMessage.observe(this, Observer {
+            uiHelper.showErrorToast(it)
+        })
+        vm.uploading.observe(this, Observer {
+            uiHelper.showUploading(it)
+        })
+    }
 }

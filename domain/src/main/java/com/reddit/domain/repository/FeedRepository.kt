@@ -16,4 +16,8 @@ interface FeedRepository : Repository {
     fun refresh(period: FeedPeriod): Completable
     fun observeFeed(period: FeedPeriod): Observable<PageBundle<Feed>>
     fun fetchNext(period: FeedPeriod): Completable
+
+    fun observeFavorites(): Observable<List<Feed>>
+    fun storeFavorite(feed: Feed): Completable
+    fun removeFavorite(feed: Feed): Completable
 }

@@ -34,7 +34,7 @@ class FeedItemViewModel(private val context: Context) {
         feed = item
         author = item.authorName
         title = item.title
-        contentImageUri = item.image?.url
+        contentImageUri = item.imageUri
         rating = item.score.toString()
         commentsCount = item.commentsCount.toString()
         data = item.date

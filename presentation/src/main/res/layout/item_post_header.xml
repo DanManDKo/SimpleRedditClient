@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.reddit.presentation.feature.feed.FeedViewModel" />
         <variable
             name="item"
             type="com.reddit.presentation.feature.feed.FeedItemViewModel" />
@@ -65,6 +67,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> vm.onAddToFavoriteClicked(item.feed)}"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="?selectableItemBackgroundBorderless"
