@@ -26,7 +26,8 @@ constructor() : Mapper<FeedDto.Children, Feed> {
             value.data.subredditNamePrefixed,
             value.data.author,
             value.data.after,
-            value.data.permalink
+            value.data.permalink,
+            false
         )
     }
 

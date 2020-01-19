@@ -53,10 +53,29 @@ constructor(
 
     }
 
-    fun onAddToFavoriteClicked(feed: Feed) {
+    fun onFavoriteBtnClicked(feed: Feed) {
+        if (feed.isFavorite) {
+            removeFromFavorite(feed)
+        } else {
+            addToFavorite(feed)
+        }
+    }
+
+    private fun addToFavorite(feed: Feed) {
         RxDisposable.manage(
             this, "addToFavorite",
             feedInteractor.addToFavorite(feed)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { uploading.value = true }
+                .doOnTerminate { uploading.value = false }
+                .defaultSubscribe(errorHandler, errorMessage)
+        )
+    }
+
+    private fun removeFromFavorite(feed: Feed) {
+        RxDisposable.manage(
+            this, "removeFromF",
+            feedInteractor.removeFromFavorite(feed)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { uploading.value = true }
                 .doOnTerminate { uploading.value = false }

@@ -67,7 +67,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:onClick="@{() -> vm.onAddToFavoriteClicked(item.feed)}"
+            android:onClick="@{() -> vm.onFavoriteBtnClicked(item.feed)}"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="?selectableItemBackgroundBorderless"

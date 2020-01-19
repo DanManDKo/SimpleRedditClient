@@ -34,6 +34,10 @@ constructor(private val feedRepository: FeedRepository) {
         return feedRepository.storeFavorite(feed)
     }
 
+    fun removeFromFavorite(feed: Feed): Completable {
+        return feedRepository.removeFavorite(feed)
+    }
+
     fun observeFavorites(): Observable<List<Feed>> {
         return feedRepository.observeFavorites()
     }

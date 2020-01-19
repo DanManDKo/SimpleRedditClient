@@ -62,10 +62,18 @@ constructor(
     }
 
     override fun storeFavorite(feed: Feed): Completable {
+        feed.isFavorite = true
         return feedDatabaseStorage.storeFeed(feed)
+            .andThen(memoryStorage.update({ it.id == feed.id }) {
+                it.copy(isFavorite = true)
+            })
     }
 
     override fun removeFavorite(feed: Feed): Completable {
+        feed.isFavorite = false
         return feedDatabaseStorage.removeFeed(feed)
+            .andThen(memoryStorage.update({ it.id == feed.id }) {
+                it.copy(isFavorite = false)
+            })
     }
 }

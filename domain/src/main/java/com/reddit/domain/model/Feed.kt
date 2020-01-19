@@ -21,5 +21,6 @@ data class Feed(
     val subredditNamePrefixed: String,
     val authorName: String,
     val after: String?,
-    var permalink: String
+    var permalink: String,
+    var isFavorite: Boolean
 )

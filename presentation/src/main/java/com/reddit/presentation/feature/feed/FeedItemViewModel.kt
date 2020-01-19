@@ -38,7 +38,10 @@ class FeedItemViewModel(private val context: Context) {
         rating = item.score.toString()
         commentsCount = item.commentsCount.toString()
         data = item.date
-        imageBtnFavorite = imageNotFavorite
+        imageBtnFavorite = if (item.isFavorite) {
+            imageFavorite
+        } else {
+            imageNotFavorite
+        }
     }
-
 }
