@@ -55,6 +55,14 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(
             }
         }
 
+        override fun getPageTitle(position: Int): CharSequence? {
+            return when (position) {
+                0 -> getString(R.string.feed_label_feed)
+                1 -> getString(R.string.feed_label_favorites)
+                else -> throw IllegalArgumentException("Unknown tab $position")
+            }
+        }
+
         override fun getCount(): Int = 2
     }
 }
