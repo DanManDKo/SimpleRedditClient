@@ -1,8 +1,9 @@
-package com.reddit.presentation.common.databinding
+package com.reddit.presentation.common.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import com.reddit.presentation.common.databinding.OneTimeActionWithParameter
 
 /**
  * Created with Android Studio.
@@ -20,9 +21,10 @@ fun <T1> observeForever(
 )
         : OneTimeActionWithParameter<T1> {
 
-    val action = OneTimeActionWithParameter<T1>() {
-        block(it)
-    }
+    val action =
+        OneTimeActionWithParameter<T1>() {
+            block(it)
+        }
 
     p1.observeForever {
         action.invoke(it)

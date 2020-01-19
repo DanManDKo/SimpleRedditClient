@@ -84,19 +84,10 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:2.0.0"
 
     /* Glide */
-    implementation "com.github.bumptech.glide:glide:4.9.0"
-    implementation "com.github.bumptech.glide:annotations:4.9.0"
-    kapt "com.github.bumptech.glide:compiler:4.9.0"
+    implementation "com.github.bumptech.glide:glide:4.10.0"
+    implementation "com.github.bumptech.glide:annotations:4.10.0"
+    kapt "com.github.bumptech.glide:compiler:4.10.0"
 
-    // -- Extra --
-    // extra activity injection
-    implementation "com.f2prateek.dart:dart:2.0.3"
-    kapt "com.f2prateek.dart:dart-processor:2.0.3"
-    implementation "com.f2prateek.dart:henson:2.0.3"
-    kapt "com.f2prateek.dart:henson-processor:2.0.3"
-    // extra fragment injection
-    implementation "com.hannesdorfmann.fragmentargs:annotation:3.0.2"
-    kapt "com.hannesdorfmann.fragmentargs:processor:3.0.2"
     // auto injection for save instance
     implementation "com.evernote:android-state:1.4.1"
     kapt "com.evernote:android-state-processor:1.4.1"

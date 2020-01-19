@@ -39,7 +39,6 @@ class FeedAdapter(private val vm: FeedViewModel) :
                 R.layout.item_feed, parent, false
             )
         return ItemViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -49,7 +48,7 @@ class FeedAdapter(private val vm: FeedViewModel) :
     inner class ItemViewHolder(private val binding: ItemFeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val item = FeedItemViewModel()
+        private val item = FeedItemViewModel(binding.root.context)
 
         fun bind(feed: Feed) {
             item.bind(feed)
