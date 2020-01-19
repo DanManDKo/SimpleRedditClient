@@ -40,7 +40,7 @@
                 android:layout_marginEnd="5dp"
                 android:maxLines="3"
                 android:text="@{item.title}"
-                android:textColor="@android:color/black"
+                android:textColor="?colorOnBackground1"
                 android:textSize="18sp"
                 tools:text="Title" />
 
@@ -51,9 +51,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
                 android:img_animated_placeholder="@{true}"
                 android:img_uri="@{item.contentImageUri}"
+                android:scaleType="centerCrop"
                 tools:ignore="ContentDescription"
                 tools:layout_height="200dp" />
 
@@ -74,7 +74,7 @@
                     android:drawablePadding="5dp"
                     android:gravity="center_vertical"
                     android:text="@{item.rating}"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="?colorOnBackground1"
                     android:textSize="14sp"
                     tools:text="666" />
 
@@ -87,9 +87,9 @@
                     android:layout_weight="1"
                     android:drawableStart="@drawable/ic_comment"
                     android:drawablePadding="5dp"
-                    android:text="@{item.commentsCount}"
                     android:gravity="center_vertical"
-                    android:textColor="@android:color/darker_gray"
+                    android:text="@{item.commentsCount}"
+                    android:textColor="?colorOnBackground1"
                     android:textSize="14sp"
                     tools:text="404" />
 
