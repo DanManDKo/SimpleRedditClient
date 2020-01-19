@@ -6,6 +6,7 @@ import com.reddit.domain.model.Feed
 import com.reddit.domain.type.ContentState
 import com.reddit.domain.type.FeedPeriod
 import com.reddit.presentation.common.BaseViewModel
+import com.reddit.presentation.common.databinding.SingleLiveEvent
 import com.reddit.presentation.common.error.DefaultErrorHandler
 import com.reddit.presentation.common.extensions.defaultSubscribe
 import com.reddit.presentation.common.extensions.observeForever
@@ -32,6 +33,8 @@ constructor(
     var contentState = MutableLiveData<ContentState>()
     var content = MutableLiveData<List<Feed>>()
 
+    var feedClickedEvent = SingleLiveEvent<Feed>()
+
     init {
         observeForever(feedType) {
             observeFeedByType(it)
@@ -50,7 +53,7 @@ constructor(
     }
 
     fun onFeedClicked(feed: Feed) {
-
+        feedClickedEvent.value = feed
     }
 
     fun onFavoriteBtnClicked(feed: Feed) {
