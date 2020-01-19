@@ -1,5 +1,6 @@
 package com.reddit.presentation.di
 
+import com.reddit.domain.repository.FeedRepository
 import com.reddit.domain.repository.Repository
 import com.reddit.presentation.App
 import com.reddit.presentation.di.module.AppModule
@@ -29,6 +30,8 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(app: App)
+
+    fun provideFeedRepository(): FeedRepository
 
     object Initializer {
         fun init(

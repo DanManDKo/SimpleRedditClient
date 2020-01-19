@@ -4,5 +4,6 @@
 
     <application
         android:name=".InjectorApp"
+        android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning" />
 </manifest>

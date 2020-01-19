@@ -28,6 +28,7 @@ import dagger.multibindings.IntoMap
 )
 interface FeedActivityComponent {
     fun inject(activity: FeedActivity)
+    fun inject(fragment: FeedFragment)
 
     @Module
     class ActivityModule(private val activity: FeedActivity) {

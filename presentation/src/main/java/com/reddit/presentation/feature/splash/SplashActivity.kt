@@ -16,5 +16,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val intent = FeedActivity.getIntent(this)
         startActivity(intent)
+        finish()
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SimpleRedditClient</string>
+    <string name="feed_label_feed">Feed</string>
+    <string name="feed_label_favorites">Favorites</string>
 </resources>

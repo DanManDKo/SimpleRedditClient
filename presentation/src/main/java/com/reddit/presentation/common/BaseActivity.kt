@@ -5,6 +5,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import javax.inject.Inject
@@ -28,6 +29,10 @@ open class BaseActivity<BINDING : ViewDataBinding, VM : BaseViewModel>
     lateinit var viewModelFactory: ViewModelFactory
     @Inject
     lateinit var uiHelper: UiHelper
+
+    open fun inject(fragment: Fragment) {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

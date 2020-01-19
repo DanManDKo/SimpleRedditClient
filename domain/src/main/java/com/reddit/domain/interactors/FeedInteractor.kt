@@ -3,6 +3,7 @@ package com.reddit.domain.interactors
 import com.reddit.domain.model.Feed
 import com.reddit.domain.model.PageBundle
 import com.reddit.domain.repository.FeedRepository
+import com.reddit.domain.type.FeedPeriod
 import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -17,16 +18,16 @@ class FeedInteractor
 @Inject
 constructor(private val feedRepository: FeedRepository) {
 
-    fun refresh(): Completable {
-        return feedRepository.refresh()
+    fun refresh(period: FeedPeriod): Completable {
+        return feedRepository.refresh(period)
     }
 
-    fun observeFeed(): Observable<PageBundle<Feed>>{
-        return feedRepository.observeFeed()
+    fun observeFeed(period: FeedPeriod): Observable<PageBundle<Feed>> {
+        return feedRepository.observeFeed(period)
     }
 
-    fun fetchNext(): Completable{
-        return feedRepository.fetchNext()
+    fun fetchNext(period: FeedPeriod): Completable {
+        return feedRepository.fetchNext(period)
     }
 
 }
